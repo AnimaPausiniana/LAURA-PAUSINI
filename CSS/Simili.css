@@ -1,0 +1,96 @@
+ body {
+            background-color: #687e3f;
+            color: white;
+            font-family: 'Ambroise Std Francois Light', serif;
+        }
+		a {
+			text-decoration: none;
+			color: #dce7de;
+			}
+        .main-container {
+            display: flex;
+            align-items: center; /* Allinea gli elementi verticalmente */
+            justify-content: flex-start; /* Allinea gli elementi orizzontalmente */
+            gap: 20px; /* Spazio tra gli elementi */
+            margin: 20px;
+        }
+        .main-container img {
+            border-radius: 10px;
+        }
+        .main-container .text {
+            flex: 2; /* Fa sì che il testo abbia maggiore spazio */
+        }
+        .main-container .button-container {
+            flex: 1; /* Il pulsante e l'immagine occupano meno spazio */
+            text-align: center;
+        }
+        .button-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #707081;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        table {
+            width: 30%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            caption-side: top;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .VIDEO {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .VIDEO .item {
+            text-align: center;
+        }
+        .TITCEN {
+            text-align: center;
+        }
+		.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-container .next-album {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #74a5b8; /* Colore leggermente diverso */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-container .next-album:hover {
+    background-color: #558394; /* Colore hover */
+}
