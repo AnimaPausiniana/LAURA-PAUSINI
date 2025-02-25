@@ -1,0 +1,27 @@
+body {
+            color: white;
+            font-family: 'Ambroise Std Francois Light', sans-serif;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('Foto/Home.png'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .paragraph-box {
+            position: absolute;
+            top: 80%; /* Cambia questa percentuale per regolare la posizione verticale */
+            right: 71%; /* Cambia questa percentuale per regolare la posizione orizzontale */
+            width: 25%; /* Larghezza del rettangolo */
+            padding: 10px; /* Spaziatura interna */
+            background-color: rgba(0, 0, 0, 0.5); /* Sfondo semitrasparente */
+            border: 1px solid white; /* Bordo del rettangolo */
+            color: white;
+            text-align: center;
+        }

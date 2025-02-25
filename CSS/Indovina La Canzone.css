@@ -1,0 +1,28 @@
+body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        #feedback-message {
+            margin-top: 20px;
+            font-weight: bold;
+        }

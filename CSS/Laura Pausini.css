@@ -1,0 +1,161 @@
+body {
+	background-color: white;
+	color: black;
+	font-family: Ambroise Std Francois Light;
+	font-size: 15px;
+	margin: 0;
+    padding: 0;
+	}
+header {
+	background-color: #D57E7C;
+	color: white;
+	font-family: Ambroise Std Francois Light;
+	margin: 0;
+	padding: 10px 0; 
+	}
+nav {
+	background-color: #D57E7C;
+	color: black;
+	height: 40px;
+	text-align: center;
+	}
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none; 
+	display: flex;
+	justify-content: center; 
+	}
+nav ul li {
+	position: relative;
+	}
+ nav ul li a {
+	display: inline-block;
+	text-decoration: none;
+	background-color: #D57E7C;
+	color: white;
+	padding: 7px;
+	height: 16px;
+	width: 100px;
+	text-align: center;
+	font-size: 20px;
+	}
+nav ul li a:hover {
+	background-color: #D57E7C;
+	color: black;
+	}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #D57E7C; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    z-index: 1;
+	left: 0;
+    padding: 10px 0;	
+	width: 150px;
+    top: 30px;
+	}
+.dropdown-menu li {
+    display: block;
+	}
+.dropdown-menu a {
+	background-color: #D57E7C;
+    color: white;
+    padding: 10px; 
+    text-decoration: none; 
+    font-family: Ambroise Std Francois Light;
+	}
+.dropdown-menu a:hover {
+    background-color: #D57E7C;
+	}
+nav ul li:hover .dropdown-menu {
+    display: block;
+	background-color: #D57E7C;
+	}
+iframe {
+	border: none;
+	width: 100%;
+	height: 100vh; /* Altezza proporzionale allo schermo */
+	}
+footer {
+	text-align: center;
+	font-size: 15px;
+	color: white;
+	background-color: #D57E7C; 
+	margin: 0;
+	padding: 10px 0; 
+	}
+a {
+	display: inline-block;
+	text-decoration: none;
+	background-color: #D57E7C;
+	color: white;
+	padding: 7px;
+	height: 16px;
+	width: 100px;
+	text-align: center;
+	}
+a:hover {
+	background-color: #D57E7C;
+	color: black;
+	transform: scale(1.2);
+	transition: transform 0.2s ease; 
+	}
+h1 {
+	text-align: center;
+	margin: 0; 
+	padding: 0;
+	font-size: 40px; /* Dimensione scalabile */
+	}
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 4vw; /* Più proporzionale */
+    }
+    iframe {
+        height: 40vh; /* Altezza ridotta per schermi piccoli */
+    }
+}
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 4.5vw;
+    }
+    nav ul {
+        padding: 0;
+        list-style-type: none;
+    }
+    nav li {
+        margin: 10px 0;
+    }
+    nav a {
+        text-align: center;
+        display: block;
+        padding: 10px;
+    }
+}
+#welcome-message {
+    position: fixed;
+    top: -200px; /* Inizia fuori dallo schermo */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: top 0.5s ease-in-out; /* Animazione */
+    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
+}
+
+#welcome-message img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#welcome-message.show {
+    top: 50px; /* Posizione finale */
+}
+
+#welcome-message.hidden {
+  display:none;
+}

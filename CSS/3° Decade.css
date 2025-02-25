@@ -1,0 +1,57 @@
+body {
+	background-color: white;
+	color: black;
+	font-family: Ambroise Std Francois Light;
+	font-size: 20px;
+	}
+h1 {
+	text-align: center; 
+	font-family: Ambroise Std Francois Light;
+	margin: 0;
+	}
+header {
+	background-color: #D57E7C;
+	color: white;
+}
+
+p {
+	color: black; 
+	font-family: Ambroise Std Francois Light;
+	font-size: 18px;
+	}
+img { 	
+	width: 900px;
+	height: 500px;
+	}
+.imgdx
+{ 
+	width:200px;
+	height:200px; 
+	display: block;
+	float: right; 
+	margin-right: 0px;
+	}
+.imgsx
+{
+	width: 200px;
+	height: 200px;
+	display: block;
+	float: left;
+	margin-left: 0px;
+	}
+.PDX, .PSX {
+	margin: 0;
+	font-family: Ambroise Std Francois Light;
+	color: white;
+	}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    background-color: #D57E7C;
+    color: white;
+    padding: -15px; 
+	}
+a {
+	text-decoration: none;
+	}
