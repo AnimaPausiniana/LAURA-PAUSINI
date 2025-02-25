@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titoli Intrecciati</title>
+    <link href="CSS/Titoli Intrecciati.css" rel="stylesheet" type="text/css">
+		<style type='text/css'>
+</style>
+</head>
+<body>
+    <h1>Titoli Intrecciati</h1>
+    <p>Trova i titoli delle canzoni di Laura!</p>
+    <div id="grid"></div>
+    <p>Parole da trovare:</p>
+    <div id="word-list-container">
+        <div class="word-column" id="word-column-left"></div>
+        <div class="word-column" id="word-column-right"></div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="resetGame()">Reset</button>
+        <button onclick="showSolutions()">Soluzioni</button>
+        <button onclick="nextLevel()">Prossimo Livello</button>
+    </div>
+
+    <script>
+        let words = ["LA SOLITUDINE", "NON C'È", "STRANI AMORI", "RAGAZZE CHE", "INCANCELLABILE", "LA VOCE", "LA MIA RISPOSTA", "SUCCEDE AL CUORE", "TRA TE E IL MARE", "FIDATI DI ME", "E RITORNO DA TE", "UNA STORIA CHE VALE", "SURRENDER", "I NEED LOVE", "VIVIMI", "COSÌ IMPORTANTE", "IO CANTO", "CINQUE GIORNI", "INVECE NO", "IL MIO BENEFICIO", "CASOMAI", "NON SONO LEI", "BENVENUTO", "CELESTE", "LIMPIDO", "DOVE RESTO SOLO IO", "SIMILI", "COLPEVOLE", "LA SOLUZIONE", "LE DUE FINESTRE", "DURARE", "ANIME PARALLELE", "CIAO"];
+        const gridSize = 16;
+        let board = Array(gridSize).fill().map(() => Array(gridSize).fill("")); 
+        let wordPositions = [];
+        const grid = document.getElementById("grid");
+        let selectedCells = [];
+
+        function canPlaceWord(word, row, col, dx, dy) {
+            word = word.replace(/\s/g, "");
+            for (let i = 0; i < word.length; i++) {
+                let x = row + i * dx;
+                let y = col + i * dy;
+                if (x < 0 || x >= gridSize || y < 0 || y >= gridSize || (board[x][y] !== "" && board[x][y] !== word[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function placeWord(word) {
+            word = word.replace(/\s/g, "").replace(/'/g, "");
+            let directions =  [[0, 1], [1, 0], [1, 1], [1, -1]];
+            let placed = false;
+            let attempts = 0;
+            const maxAttempts = 100;
+
+            while (!placed && attempts < maxAttempts) {
+                let row = Math.floor(Math.random() * gridSize);
+                let col = Math.floor(Math.random() * gridSize);
+                let [dx, dy] = directions[Math.floor(Math.random() * directions.length)];
+                if (canPlaceWord(word, row, col, dx, dy)) {
+                    let positions = [];
+                    for (let i = 0; i < word.length; i++) {
+                        let x = row + i * dx;
+                        let y = col + i * dy;
+                        board[x][y] = word[i];
+                        positions.push([x, y]);
+                    }
+                    wordPositions.push(positions);
+                    placed = true;
+                }
+                attempts++;
+            }
+            if (!placed) console.warn(`Impossibile posizionare: ${word}`);
+        }
+
+        function createBoard() {
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            board = Array(gridSize).fill().map(() => Array(gridSize).fill("")); 
+            wordPositions = [];
+            words.forEach(placeWord);
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (board[i][j] === "") {
+                        board[i][j] = letters[Math.floor(Math.random() * letters.length)];
+                    }
+                }
+            }
+        }
+
+        function createGrid() {
+            grid.innerHTML = "";
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    let cell = document.createElement("div");
+                    cell.className = "cell";
+                    cell.textContent = board[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener("click", selectLetter);
+                    grid.appendChild(cell);
+                }
+            }
+        }
+
+        function selectLetter(event) {
+            let cell = event.target;
+            if (!selectedCells.includes(cell)) {
+                selectedCells.push(cell);
+                cell.classList.add("selected");
+            }
+        }
+
+        function resetGame() {
+            selectedCells = [];
+            createBoard();
+            createGrid();
+        }
+        
+        function nextLevel() {
+            alert("Prossimi Livelli In Arrivo!");
+        }
+
+        function showSolutions() {
+            wordPositions.forEach(word => {
+                word.forEach(([row, col]) => {
+                    document.querySelector(`.cell[data-row='${row}'][data-col='${col}']`).classList.add("solution");
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            createBoard();
+            createGrid();
+
+            // Dividere le parole in due colonne
+            const half = Math.ceil(words.length / 2);
+            const leftWords = words.slice(0, half);
+            const rightWords = words.slice(half);
+
+            const leftColumn = document.getElementById("word-column-left");
+            const rightColumn = document.getElementById("word-column-right");
+
+            // Aggiungi le parole alla colonna di sinistra
+            leftWords.forEach(word => {
+                const li = document.createElement("li");
+                li.textContent = word;
+                leftColumn.appendChild(li);
+            });
+
+            // Aggiungi le parole alla colonna di destra
+            rightWords.forEach(word => {
+                const li = document.createElement("li");
+                li.textContent = word;
+                rightColumn.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>

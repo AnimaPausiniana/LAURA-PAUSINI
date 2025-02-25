@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indovina la Canzone</title>
+    <link href="CSS/Indovina La Canzone.css" rel="stylesheet" type="text/css">
+		<style type='text/css'>
+</style>
+</head>
+<body>
+    <h1>Indovina La Canzone</h1>
+    <button id="play-button">Play</button>
+    <input type="text" id="answer-input">
+    <button id="verify-button">Verifica</button>
+	<button id="next-song-button">Prossima Canzone</button>
+    <p id="feedback-message"></p>
+
+    <script>
+        const songs = [
+            { title: "La Solitudine", audio: "Audio/La Solitudine.mp3" },
+            // Aggiungi altre canzoni qui
+        ];
+
+        const playButton = document.getElementById("play-button");
+        const answerInput = document.getElementById("answer-input");
+        const verifyButton = document.getElementById("verify-button");
+		const nextSongButton = document.getElementById("next-song-button");
+        const feedbackMessage = document.getElementById("feedback-message");
+        let currentSong;
+
+        playButton.addEventListener("click", playSong);
+        verifyButton.addEventListener("click", verifyAnswer);
+		nextSongButton.addEventListener("click", showNextSongAlert);
+     
+	 function playSong() {
+            const randomIndex = Math.floor(Math.random() * songs.length);
+            currentSong = songs[randomIndex];
+            const audio = new Audio(currentSong.audio);
+            audio.play();
+        }
+        function verifyAnswer() {
+            const answer = answerInput.value.trim().toLowerCase();
+            const correctAnswer = currentSong.title.toLowerCase();
+            if (answer === correctAnswer) {
+                feedbackMessage.textContent = "Corretto!";
+                feedbackMessage.style.color = "green";
+            } else {
+                feedbackMessage.textContent = "Sbagliato! La risposta corretta è " + currentSong.title;
+                feedbackMessage.style.color = "red";
+            }
+        }
+
+function showNextSongAlert() {
+    alert("Prossimamente In Arrivo!");
+}
+    </script>
+</body>
+</html>

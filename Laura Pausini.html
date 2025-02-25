@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Laura Pausini </title>
+		<meta charset='utf-8'>
+	<link href="CSS/Laura Pausini.css" rel="stylesheet" type="text/css">
+<style type='text/css'>
+</style>
+	</head>
+		<body>
+		<div id="welcome-message" class="hidden">
+        <img src="Foto/Benvenuto Sito.jpg" alt="Laura Pausini">
+        <p>Ciao! Benvenuto/a sul sito NON UFFICIALE dedicato a Laura Pausini &#x1FA77;</p>
+    </div>
+		<header> 
+			<h1> LAURA PAUSINI </h1>
+		</header>
+			<script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('welcome-message').classList.add('show');
+                document.getElementById('welcome-message').classList.remove('hidden');
+                setTimeout(function(){
+                    document.getElementById('welcome-message').classList.remove('show');
+                    document.getElementById('welcome-message').classList.add('hidden');
+                }, 5000)
+            }, 1000);
+        };
+    </script>
+			<nav>
+        <ul>
+            <li><a href="Biografia.html" target="main">Biografia</li></a>
+            <li><a href="Discografia.html" target="main">Album</a></li>
+            <li><a href="Collaborazioni.html" target="main">Collab</a></li>
+            <li><a href="Tour.html" target="main">Tour</a></li>
+            <li><a href="Premi e Riconoscimenti.html" target="main">Premi</a></li>
+            <li><a href="TV.html" target="main">TV</a></li>
+            <li><a href="Sanremo.html" target="main">Sanremo</a></li>
+            <li><a href="Sociale.html" target="main">Sociale</a></li>
+            <li>
+                <a href="#">Giochi</a>
+                <ul class="dropdown-menu">
+                    <li><a href="Cruciverba.html" target="main">Cruciverba</a></li>
+                    <li><a href="Titoli Intrecciati.html" target="main">Titoli Intrecciati</a></li>
+                    <li><a href="Completa La Strofa.html" target="main">Completa La Strofa</a></li>
+                    <li><a href="Indovina La Canzone.html" target="main">Indovina La Canzone</a></li>
+                </ul>
+            </li>
+			<li>
+                <a href="#">Altro</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://laura4u.com/it/" target="main">Fan Club</a></li>
+                    <li><a href="https://laurapausini.com/it/" target="main">Laura Pausini Website</a></li>
+                    <li><a href="https://www.instagram.com/laurapausini/" target="main">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/LauraPausini/" target="main">Facebook</a></li>
+                    <li><a href="https://x.com/LauraPausini" target="main">X</a></li>
+                    <li><a href="https://www.tiktok.com/@laurapausini?lang=it-IT" target="main">TikTok</a></li>
+                    <li><a href="https://open.spotify.com/intl-it/artist/2e4nwiX8ZCU09LGLOpeqTH?si=AWlLHADSRUuZN883ZFs-fQ" target="main">Spotify</a></li>
+                    <li><a href="http://www.youtube.com/@laurapausinitv" target="main">YouTube</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+				<section> 
+					<iframe name = 'main' src='Laura Home.html'> 
+					</iframe>
+				</section>
+				<footer>
+	<h2>Alex Petrantoni &#x1F308;<br>
+	IIS OLIVETTI - Ivrea &#x1F3EB; <br>
+	IG: @alex._petra - X: @animapausiniana </h2>
+	</footer>
+		</body>
+</html>
