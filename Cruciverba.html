@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruciverba Interattivo</title>
+    <link href="CSS/Cruciverba.css" rel="stylesheet" type="text/css">
+		<style type='text/css'>
+</style>
+</head>
+<body>
+    <h1>Cruciverba Interattivo</h1>
+    
+    <div class="cruciverba-container">
+        <table id="griglia"></table>
+    </div>
+
+    <div class="indizi">
+    <h2>Indizi</h2>
+    <div class="indizi-container">
+        <div>
+            <h3>Orizzontale</h3>
+            <ul id="orizzontali">
+                <li>2. Per Laura sono "dritti all'orizzonte"</li>
+                <li>4. Premio importante vinto da Laura</li>
+                <li>6. Cognome della Paola amica di Laura</li>
+                <li>8. Città natale di Laura</li>
+                <li>10. Titolo album del 2011 di Laura</li>
+				<li>12. Canzone vincitrice di Sanremo 1993 </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Verticale</h3>
+            <ul id="verticali">
+                <li>1. Tipica espressione pronunciata da Laura</li>
+                <li>3. Amica romana di Laura</li>
+                <li>5. Nome del cagnolino di Laura</li>
+                <li>7. Tema centrale delle canzoni di Laura</li>
+                <li>8. A Laura non piacciono "A Metà"</li>
+                <li>9. Lo è Silvia per Laura</li>
+                <li>11. Il nome di Ferro amico di Laura</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    <div class="buttons">
+        <button id="resetButton">Reset</button>
+        <button id="verificaButton">Verifica</button>
+        <button id="soluzioniButton">Mostra Soluzioni</button>
+    </div>
+
+    <script>
+        const griglia = Array.from({ length: 27 }, () => Array(27).fill(''));
+
+        const parolaAdoro = ['A', 'D', 'O', 'R', 'O'];
+        for (let i = 0; i < parolaAdoro.length; i++) {
+            griglia[i][7] = parolaAdoro[i];
+        }
+
+        const parolaOcchi = ['O', 'C', 'C', 'H', 'I'];
+        for (let i = 0; i < parolaOcchi.length; i++) {
+            griglia[4][7 + i] = parolaOcchi[i];
+        }
+
+        const parolaGiorgia = ['G', 'I', 'O', 'R', 'G', 'I', 'A'];
+        for (let i = 0; i < parolaGiorgia.length; i++) {
+            griglia[3 + i][11] = parolaGiorgia[i];
+        }
+
+        const parolaGrammy = ['G', 'R', 'A', 'M', 'M', 'Y'];
+        for (let i = 0; i < parolaGrammy.length; i++) {
+            griglia[7][11 + i] = parolaGrammy[i];
+        }
+		const parolaLila = ['L', 'I', 'L', 'A'];
+        for (let i = 0; i < parolaLila.length; i++) {
+            griglia[4 + i][13] = parolaLila[i];
+        }
+		const parolaTiziano = ['T', 'I', 'Z', 'I','A','N','O'];
+        for (let i = 0; i < parolaTiziano.length; i++) {
+            griglia[6 + i][9] = parolaTiziano[i];
+        }
+		const parolaLaSolitudine = ['L', 'A','S', 'O', 'L', 'I', 'T', 'U', 'D', 'I', 'N', 'E'];
+		for (let i = 0; i < parolaLaSolitudine.length; i++) {
+		griglia[5][15 + i] = parolaLaSolitudine[i];
+		}
+		const parolaAmore = ['A', 'M', 'O', 'R','E'];
+        for (let i = 0; i < parolaAmore.length; i++) {
+            griglia[6 + i][15] = parolaAmore[i];
+        }
+		const parolaFaenza = ['F', 'A', 'E', 'N','Z', 'A'];
+		for (let i = 0; i < parolaFaenza.length; i++) {
+		griglia[10][13 + i] = parolaFaenza[i];  
+		}
+		const parolaFrasi = ['R', 'A', 'S','I'];
+        for (let i = 0; i < parolaFrasi.length; i++) {
+            griglia[11 + i][13] = parolaFrasi[i];
+        }
+		const parolaInedito = ['N', 'E', 'D','I','T','O'];
+        for (let i = 0; i < parolaInedito.length; i++) {
+            griglia[14][14 + i] = parolaInedito[i];
+        }
+		const parolaSorella = ['S', 'O', 'R','E','L','L','A'];
+        for (let i = 0; i < parolaSorella.length; i++) {
+            griglia[13 + i][19] = parolaSorella[i];
+        }
+		const parolaCortellesi = ['C', 'O', 'R','T','E','L','L','E','S','I'];
+        for (let i = 0; i < parolaCortellesi.length; i++) {
+            griglia[7][0 + i] = parolaCortellesi[i];
+        }
+        
+	function creaGriglia() {
+    const table = document.getElementById('griglia');
+    
+    for (let i = 0; i < griglia.length; i++) {
+        let row = document.createElement('tr');
+        for (let j = 0; j < griglia[i].length; j++) {
+            let cell = document.createElement('td');
+            
+            let container = document.createElement('div');
+            container.style.position = "relative";
+            container.style.width = "100%";
+            container.style.height = "100%";
+            
+            if (j === 7 && i === 0) {
+                let numero = document.createElement('span');
+                numero.innerText = "1";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 7 && i === 4) {
+                let numero = document.createElement('span');
+                numero.innerText = "2";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 11 && i === 7) {
+                let numero = document.createElement('span');
+                numero.innerText = "4";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 0 && i === 7) {
+                let numero = document.createElement('span');
+                numero.innerText = "6";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 13 && i === 10) {
+                let numero = document.createElement('span');
+                numero.innerText = "8";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 13 && i === 14) {
+                let numero = document.createElement('span');
+                numero.innerText = "10";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 11 && i === 3) {
+                let numero = document.createElement('span');
+                numero.innerText = "3";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 13 && i === 4) {
+                let numero = document.createElement('span');
+                numero.innerText = "5";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 15 && i === 5) {
+                let numero = document.createElement('span');
+                numero.innerText = "12";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 15 && i === 6) {
+                let numero = document.createElement('span');
+                numero.innerText = "7";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 19 && i === 13) {
+                let numero = document.createElement('span');
+                numero.innerText = "9";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+			if (j === 9 && i === 6) {
+                let numero = document.createElement('span');
+                numero.innerText = "11";
+                numero.style.position = "absolute";
+                numero.style.top = "2px";
+                numero.style.left = "2px";
+                numero.style.fontSize = "10px";
+                numero.style.fontWeight = "bold";
+                numero.style.color = "black";
+                container.appendChild(numero);
+            }
+            if ((j === 7 && i >= 0 && i <= 4) || 
+                (i === 4 && j >= 7 && j <= 11) || 
+                (j === 11 && i >= 3 && i <= 9) || 
+                (i === 7 && j >= 11 && j <= 16) || 
+                (j === 13 && i >= 4 && i <= 7) ||  
+                (j === 9 && i >= 6 && i <= 12) ||  
+                (i === 5 && j >= 15 && j <= 26) ||
+                (j === 15 && i >= 6 && i <= 10) ||
+                (i === 10 && j >= 13 && j <= 18) ||
+                (j === 13 && i >= 11 && i <= 14) ||
+                (i === 14 && j >= 14 && j <= 19) ||
+                (j === 19 && i >= 13 && i <= 19) ||
+                (i === 7 && j >= 0 && j <= 8)) {
+                
+                let input = document.createElement('input');
+                input.setAttribute('maxlength', '1');
+                input.setAttribute('data-x', j);
+                input.setAttribute('data-y', i);
+                input.style.position = "relative"; 
+                container.appendChild(input);
+            } else {
+                cell.classList.add('non-interattiva');
+            }
+
+            cell.appendChild(container);
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
+}
+
+			function resetCruciverba() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                if (!input.hasAttribute('readonly')) {
+                    input.value = '';
+                    input.style.backgroundColor = '';
+                }
+            });
+        }
+
+        document.getElementById('resetButton').addEventListener('click', resetCruciverba);
+
+        document.getElementById('verificaButton').addEventListener('click', () => {
+            document.querySelectorAll('input').forEach(input => {
+                const x = parseInt(input.getAttribute('data-x'));
+                const y = parseInt(input.getAttribute('data-y'));
+                if (griglia[y][x] !== '') {
+                    input.style.backgroundColor = input.value.toUpperCase() === griglia[y][x] ? 'lightgreen' : 'lightcoral';
+                }
+            });
+        });
+
+        document.getElementById('soluzioniButton').addEventListener('click', () => {
+            document.querySelectorAll('input').forEach(input => {
+                const x = parseInt(input.getAttribute('data-x'));
+                const y = parseInt(input.getAttribute('data-y'));
+                if (griglia[y][x] !== '') {
+                    input.value = griglia[y][x];
+                    input.style.backgroundColor = '#d3f9d8';
+                }
+            });
+        });
+
+        window.onload = function() {
+            creaGriglia();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completa La Strofa</title>
+    <link href="CSS/Completa La Strofa.css" rel="stylesheet" type="text/css">
+		<style type='text/css'>
+</style>
+</head>
+<body>
+    <h1>Completa La Strofa</h1>
+    <p class="sentence">Chissà se tu <span class="drop-zone" data-answer="mi"></span> penserai<br>
+    Se con i tuoi non <span class="drop-zone" data-answer="parli"></span> mai<br>
+    Se ti <span class="drop-zone" data-answer="nascondi"></span> come me<br>
+    Sfuggi gli sguardi e te ne <span class="drop-zone" data-answer="stai"></span>
+	Rinchiuso in camera e non vuoi <span class="drop-zone" data-answer="mangiare"></span><br>
+	stringi forte a te il cuscino piangi non lo sai quanto altro <span class="drop-zone" data-answer="male"></span><br>
+	ti farà la solitudine</p>
+    
+    <div class="word-box">
+        <span class="word" draggable="true" data-word="mi">mi</span>
+        <span class="word" draggable="true" data-word="parli">parli</span>
+        <span class="word" draggable="true" data-word="nascondi">nascondi</span>
+        <span class="word" draggable="true" data-word="male">male</span>
+        <span class="word" draggable="true" data-word="stai">stai</span>
+        <span class="word" draggable="true" data-word="tu">tu</span>
+        <span class="word" draggable="true" data-word="mangiare">mangiare</span>
+        <span class="word" draggable="true" data-word="loro">loro</span>
+    </div>
+    
+    <div class="buttons">
+        <button onclick="checkAnswers()">Verifica</button>
+        <button onclick="showSolutions()">Soluzioni</button>
+        <button onclick="nextLevel()">Prossimo Livello</button>
+    </div>
+    
+    <script>
+        const words = document.querySelectorAll(".word");
+        const dropZones = document.querySelectorAll(".drop-zone");
+
+        words.forEach(word => {
+            word.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text", word.dataset.word);
+            });
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener("dragover", (e) => e.preventDefault());
+            zone.addEventListener("drop", (e) => {
+                e.preventDefault();
+                const droppedWord = e.dataTransfer.getData("text");
+                zone.textContent = droppedWord;
+                zone.dataset.currentWord = droppedWord;
+            });
+        });
+
+        function checkAnswers() {
+            let allCorrect = true;
+            dropZones.forEach(zone => {
+                if (zone.dataset.currentWord !== zone.dataset.answer) {
+                    allCorrect = false;
+                    zone.style.color = "red";
+                } else {
+                    zone.style.color = "green";
+                }
+            });
+            alert(allCorrect ? "Tutte le risposte sono corrette!" : "Alcune risposte sono errate, riprova.");
+        }
+
+        function showSolutions() {
+            dropZones.forEach(zone => {
+                zone.textContent = zone.dataset.answer;
+                zone.style.color = "black";
+            });
+        }
+
+        function nextLevel() {
+            alert("Prossimo livello in arrivo!");
+        }
+    </script>
+</body>
+</html>
