@@ -22,7 +22,7 @@ Il progetto è organizzato così:  
 
 ##  Come visualizzare il sito
 
-1.  Vai su [https://AnimaPausiniana.github.io/Laura-Pausini/](https://AnimaPausiniana.github.io/Laura-Pausini/) per visualizzare il sito web pubblicato su GitHub Pages.
+1.  Vai su [https://AnimaPausiniana.github.io/LAURA-PAUSINI/](https://AnimaPausiniana.github.io/LAURA-PAUSINI/) per visualizzare il sito web pubblicato su GitHub Pages.
 2.  In alternativa, puoi scaricare il repository e aprire `Laura Pausini.html` nel tuo browser.
 3.  Oppure, puoi clonare il repository usando Git:
 
